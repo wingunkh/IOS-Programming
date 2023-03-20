@@ -5,7 +5,7 @@ let yourVariable = 42 // let을 사용하면 상수
 // yourVariable += 42 // error
 
 // [타입 지정]
-let inplicitInteger = 70 // r-value에 의한 타입 추론
+let implicitInteger = 70 // r-value에 의한 타입 추론
 let implicitDouble = 70.5
 let explicitDouble: Double = 70 // 자동 형변환 된다.
 let explicitFloat: Float
@@ -42,7 +42,7 @@ var greeting = "Hello!"
 if let name = optionalName { // name의 타입은 r-value에 의한 타입 추론으로 인해 String?이며 상수 name에는 nil 값이 저장된다.
     greeting = "Hello, \(name)"
 }
-greeting // 그러므로 변수 greeting에는 "Hello"가 저장된다.
+greeting // 그러므로 변수 greeting에는 "Hello!"가 저장된다.
 
 // [흐름제어]
 let individualScores = [75, 43, 103, 87, 12]
