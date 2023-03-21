@@ -8,19 +8,24 @@ let yourVariable = 42 // let을 사용하면 상수
 let implicitInteger = 70 // r-value에 의한 타입 추론
 let implicitDouble = 70.5
 let explicitDouble: Double = 70 // 자동 형변환 된다.
-let explicitFloat: Float
-explicitFloat = 4
+// 실습: 명시적으로 Float 타입인 상수를 만들고 4라는 값을 할당해보자.
+let explicitFloat: Float = 4
 
 // [형 변환]
 let label = "The width is "
 let width = 94
 let widthLabel = label + String(width)
+// 실습: 위의 코드에서 String 타입 변환 부분을 제거시 어떤 에러가 발생하는가?
+// Binary operator '+' cannot be applied to operands of type 'String' and 'Int'
 
 // [문자열 안에 변수 값 적용]
 let apples = 3
 let oranges = 5
 let appleSummary = "I have \(apples) apples."
 let fruitSummary = "I have \(apples + oranges) pieces of fruit."
+// 실습: \() 를 이용해 인삿말 안에 누군가의 이름을 넣어보자.
+let name = "Hyungeun"
+let Greet = "Hello my name is \(name)."
 
 // [배열, 딕셔너리]
 var shoppingList = ["catfish", "water", "tulips", "blue paint"]
@@ -68,7 +73,8 @@ switch vegetable {
     default:
         let vegetableComment = "Everything tastes good in soup."
 }
-vegetable
+// 실습: default 문을 제거시 어떤 에러가 발생하는가?
+// Switch must be exhaustive
 
 // [for in]
 let interestingNumbers = [
@@ -77,14 +83,17 @@ let interestingNumbers = [
     "Square": [1, 4, 9, 16, 25],
 ]
 var largest = 0
+var type = ""
 for (kind, numbers) in interestingNumbers {
     for number in numbers {
         if number > largest {
             largest = number
+            type = kind
         }
     }
 }
 largest
+type
 
 // [for .. < 또는 for ...]
 var firstForLoop = 0
@@ -125,14 +134,14 @@ func getGasPrices() -> (Double, Double, Double) {
 getGasPrices()
 
 // [배열 인자]
-func sumOf(numbers: Int...) -> Int { // 배열을 이용하여 여러 개의 값을 함수의 인자로 받을 수 있다.
+func avgOf(numbers: Int...) -> Double { // 배열을 이용하여 여러 개의 값을 함수의 인자로 받을 수 있다.
     var sum = 0
     for number in numbers {
         sum += number
     }
-    return sum
+    return Double(sum) / Double(numbers.count)
 }
-sumOf(numbers: 42, 597, 12)
+avgOf(numbers: 33, 44, 55, 66)
 
 // [중첩 함수]
 func returnFifteen() -> Int {
@@ -187,6 +196,9 @@ var y = numbers.map(
 )
 y = numbers.map({ number in 3 * number }) // 추론될 수 있는 모든 것을 생략하여 클로저를 간결화할 수 있다.
 y = numbers.map({ 3 * $0 }) // 매개변수 번호를 이용하여 더욱 간결화할 수 있다.
+y
+// 실습: 모든 홀수 값에 대해 0을 반환하도록 클로저를 수정하라.
+y = numbers.map({ if $0 % 2 != 0 { return 0 } else { return $0 } })
 y
 
 // [클래스]
@@ -258,11 +270,22 @@ enum Rank: Int {
             return String(self.rawValue)
         }
     }
+    //실습: 두개의 Rank 값의 원본 값을 비교하는 함수를 구현하라.
+    func compare(other: Rank) -> String {
+        if self.rawValue == other.rawValue {
+            return "same"
+        }
+        else {
+            return "different"
+        }
+    }
 }
 let ace = Rank.Ace
 let aceRawValue = ace.rawValue
+ace.compare(other: .Jack)
 
 // [구조체]
+// 클래스와 구조체의 가장 중요한 차이점 중 하나는 클래스는 참조 복사 형태로 전달되지만 구조체는 값 복사 형태로 전달된다는 것이다.
 struct Card {
     var rank: Rank
     func simpleDescription() -> String {
