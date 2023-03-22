@@ -332,4 +332,6 @@ extension Int: ExampleProtocol {
         self += 42
     }
 }
-7.simpleDescription
+var number = 7
+number.adjust()
+number.simpleDescription
