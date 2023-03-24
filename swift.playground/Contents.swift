@@ -44,7 +44,7 @@ var optionalString: String? = "Hello"
 optionalString == nil // false
 var optionalName: String? = nil // 옵셔녈 변수는 nil 값을 저장할 수 있는 변수이다.
 var greeting = "Hello!"
-if let name = optionalName { // name의 타입은 r-value에 의한 타입 추론으로 인해 String?이며 상수 name에는 nil 값이 저장된다.
+if let name = optionalName { // non-optional 상수인 name에 optional 변수인 optionalName에 들어있는 값을 할당할 수 있다면 { } 안의 내용을 실행한다.
     greeting = "Hello, \(name)"
 }
 greeting // 그러므로 변수 greeting에는 "Hello!"가 저장된다.
