@@ -184,7 +184,7 @@ hasAnyMatches(list: array, condition: lessThanTen)
 
 // [클로저]
 // 클로저란 이름 없는 함수를 의미한다.
-// 중괄호를 묶어서 이름일 지정하지 않고 사용하며 in 키워드를 사용해 인자와 리턴 타입을 분리해 사용한다.
+// 중괄호를 묶어서 이름을 지정하지 않고 사용하며 in 키워드를 사용해 인자와 리턴 타입을 분리해 사용한다.
 let numbers = [10, 20, 30]
 var y = numbers.map(
     {
